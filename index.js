@@ -82,8 +82,11 @@ const fnEntry = (entries, observer) => {
   if (entries[0].isIntersecting) {
     const img = entries[0].target;
     const needSrc = img.dataset.minsrc;
-    img.src = needSrc;
-    observer.disconnect();
+    if (needSrc) {
+      img.src = needSrc;
+      console.log(img);
+      observer.disconnect();
+    }
   }
 };
 
@@ -93,3 +96,4 @@ const addIO = (img) => {
 };
 
 allImg.forEach((img) => addIO(img));
+// =========================================================================
